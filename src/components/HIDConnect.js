@@ -13,7 +13,11 @@ class HIDConnect extends React.Component {
   }
 
   handleClick(e) {
-    this.state.device = new HID(0x47f)
+    let vendorId = 0x47f
+    let hid = new HID(0x47f)
+
+    hid.requestDevice()
+    .then((device) => console.log(device.productName))
   }
 
   render() {
